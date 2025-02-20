@@ -26,7 +26,7 @@ app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Endpoint to handle file uploads
   app.post('/upload', upload.single('image'), (req, res) => {
- // console.log(req.file);
+  console.log(req.file);
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
