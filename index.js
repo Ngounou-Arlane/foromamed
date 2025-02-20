@@ -25,10 +25,13 @@ const upload = multer({ storage });
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Endpoint to handle file uploads
-app.post('/upload', upload.single('image'), (req, res) => {
+  app.post('/upload', upload.single('image'), (req, res) => {
+  console.log(req.file);
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
+  res.json({ filePath: req.file.filename });
+
 
   // Extract just the filename (e.g., "image.jpg") instead of the full path
   const fileName = req.file.filename;
