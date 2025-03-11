@@ -29,7 +29,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-
+  res.json({ filePath: req.file.filename });
   // Extract just the filename (e.g., "image.jpg") instead of the full path
   const fileName = req.file.filename;
 
