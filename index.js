@@ -25,14 +25,6 @@ const upload = multer({ storage });
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Endpoint to handle file uploads
-// app.post('/upload', upload.single('image'), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).json({ error: 'No file uploaded' });
-//   }
-
-
-
-// Endpoint to handle file uploads
 app.post('/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
@@ -46,8 +38,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
   res.json({ fileUrl });
 });
 
-
 // Start the server
 app.listen(port, () => {
-  // console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
